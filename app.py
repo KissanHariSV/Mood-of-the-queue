@@ -9,7 +9,7 @@ from io import StringIO
 
 # Google Sheets setup using secrets
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds_dict = st.secrets["gcp_service_account"]
+creds_dict = dict(st.secrets["gcp_service_account"])
 creds_json = StringIO(json.dumps(creds_dict))
 creds = ServiceAccountCredentials.from_json_keyfile_name(creds_json, scope)
 client = gspread.authorize(creds)
